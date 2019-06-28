@@ -15,7 +15,7 @@ var express         = require("express"),
   var indexRoute = require("./routes/index");
   var plateRoute = require("./routes/plate");
 
-mongoose.connect("mongodb://localhost/ratemyfood", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGO_DB, {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
