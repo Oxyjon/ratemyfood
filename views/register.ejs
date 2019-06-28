@@ -1,0 +1,42 @@
+<% include ./partials/header %>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="formStyle">
+            <h1>Register</h1>
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="firstName" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="lastName" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="adminCode" placeholder="Admin Code - Not Required"
+                        required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/plate">Go Back</a>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<% include ./partials/footer %>

@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-3 text-center p-2">
+            <img class="md-avatar rounded-circle size-4" src="<%=user.avatar%>" alt="IMAGE NOT FOUND">
+        </div>
+        <div class="col-md-9">
+            <h3><%=user.username%>'s Profile</h4>
+                <h4>Name: <%=user.firstName%> <%=user.lastName%></h4>
+                <h4>Email: <%=user.email%></h4>
+                <% if(currentUser && user._id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %>
+                <a class="btn btn-warning" href="/profile/<%=user._id%>/edit">Edit</a>
+                <% } %>
+                <div class="pt-2">
+                    <a href="/plate">Go Back</a>
+                </div>
+
+        </div>
+    </div>
+    <hr>
+    <div>
+        <h4><%=user.username%>'s Posts</h4>
+    </div>
+    <div class="row text-center d-flex flex-wrap p-3">
+
+        <section>
+            <% plates.forEach(function(plate){ %>
+            <% if(user._id && plate.author.id.equals(user._id)){%>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= plate.image %>">
+                    <div class="caption">
+                        <h4><%= plate.name %></h4>
+                        <% if (plate.rating === 0) { %>
+                        <em>No reviews yet.</em>
+                        <% } else { %>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star <% if (plate.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (plate.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (plate.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (plate.rating > 4.5) { %> checked <% } %>"></span>
+                        <% } %>
+                    </div>
+                    <p>
+                        <a href="/plate/<%= plate._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <%}%>
+        <% }) %>
+    </div>
+</div>
+
+<% include ../partials/footer %>
