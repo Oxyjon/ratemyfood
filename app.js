@@ -46,6 +46,6 @@ app.use("/profile", profileRoute);
 app.use("/plate", plateRoute);
 app.use("/plate/:id/reviews", reviewRoutes);
 
-app.listen(3000, function() {
-  console.log("App is running");
+app.listen(process.env.PORT, process.env.IP, function(){
+  console.log("App has started");
 });
